@@ -49,8 +49,12 @@ namespace NoMoreAgroRunner
 
                     var modPlayer = aggroedPlayer.GetModPlayer<NoMoreAgroRunnerPlayer>();
 
+                    // Convert config values from tiles to pixels for comparison
+                    float maxDistanceInPixels = NoMoreAgroRunnerConfig.Instance.MaxDistanceInTiles * 16;
+                    float warningDistanceInPixels = NoMoreAgroRunnerConfig.Instance.WarningDistanceInTiles * 16;
+
                     // Warn the aggroed player if the nearest player is within the warning range
-                    if (nearestPlayer != null && nearestDistance > NoMoreAgroRunnerConfig.Instance.WarningDistanceInTiles)
+                    if (nearestPlayer != null && nearestDistance > warningDistanceInPixels)
                     {
                         modPlayer.ShowWarning = true;
                         modPlayer.DistanceToNearestPlayer = nearestDistance;
@@ -61,7 +65,7 @@ namespace NoMoreAgroRunner
                     }
 
                     // If the nearest player is farther than the maximum allowed distance, kill the aggroed player
-                    if (nearestPlayer != null && nearestDistance > NoMoreAgroRunnerConfig.Instance.MaxDistanceInTiles)
+                    if (nearestPlayer != null && nearestDistance > maxDistanceInPixels)
                     {
                         aggroedPlayer.KillMe(PlayerDeathReason.ByCustomReason($"{aggroedPlayer.name} was too far from the fight!"), 1000.0, 0);
                     }
