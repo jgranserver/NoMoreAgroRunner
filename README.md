@@ -21,3 +21,6 @@ NoMoreAgroRunner revolutionizes the way you tackle challenging bosses in Terrari
 NoMoreAgroRunner isn't just another mod—it's a game-changer. With its innovative features and unparalleled multiplayer dynamics, it's the ultimate companion for Terraria enthusiasts who demand the best. Say goodbye to chaos and hello to coordinated victory with NoMoreAgroRunner Mod!
 
 Elevate your Terraria experience to new heights—download NoMoreAgroRunner Mod today and discover the true power of teamwork!
+
+For bugs and related stuffs submit issue here: https://github.com/jgranserver/NoMoreAgroRunner/issues/new/choose
+Source code: https://github.com/jgranserver/NoMoreAgroRunner
