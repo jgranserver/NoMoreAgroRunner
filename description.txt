@@ -14,4 +14,5 @@ Are you tired of chaotic boss battles in Terraria? [b]NoMoreAgroRunner Mod[/b] i
 Take your Terraria boss battles to the next level with [b]NoMoreAgroRunner Mod[/b]. Perfect for those who enjoy multiplayer gameplay and want a smoother, more coordinated experience.
 
 For bugs and related stuffs submit issue here: https://github.com/jgranserver/NoMoreAgroRunner/issues/new/choose
+
 Source code: https://github.com/jgranserver/NoMoreAgroRunner
