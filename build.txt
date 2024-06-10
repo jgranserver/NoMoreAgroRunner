@@ -1,0 +1,3 @@
+displayName = No More Agro Runner
+author = jgran
+version = 0.1

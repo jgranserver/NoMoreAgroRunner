@@ -1,0 +1,32 @@
+Configs: {
+	NoMoreAgroRunnerConfig: {
+		DisplayName: No More Agro Runner Config
+
+		DebugWarning: {
+			Label: Enable Debug Warning
+			Tooltip: ""
+		}
+
+		MaxDistance: {
+			Label: Maximum Distance
+			Tooltip: The maximum allowed distance (in pixels) between players during a boss fight.
+		}
+
+		WarningDistance: {
+			Label: Warning Distance
+			Tooltip: The distance (in pixels) at which a warning will be shown to players.
+		}
+
+		MaxDistanceInTiles: {
+			Label: Maximum Distance (in tiles)
+			Tooltip: The maximum allowed distance (in tiles) between players during a boss fight.
+		}
+
+		WarningDistanceInTiles: {
+			Label: Warning Distance (in tiles)
+			Tooltip: The distance (in tiles) at which a warning will be shown to players.
+		}
+	}
+}
+
+"Keybinds.Toggle Debug.DisplayName": Toggle  Debug
