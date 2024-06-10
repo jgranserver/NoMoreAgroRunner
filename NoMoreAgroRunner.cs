@@ -13,6 +13,9 @@ namespace NoMoreAgroRunner
 		private UserInterface warningInterface;
 		private WarningUI warningUI;
 		internal static ModKeybind ToggleDebugKey;
+		public static SoundStyle WarningSound1;
+		public static SoundStyle WarningSound2;
+		public static SoundStyle WarningSound3;
 
 		public override void Load()
 		{
@@ -29,6 +32,11 @@ namespace NoMoreAgroRunner
 			{
 				Logger.Error($"Error loading NoMoreAgroRunner: {e}");
 			}
+
+			WarningSound1 = new SoundStyle("NoMoreAgroRunner/Assets/Sound/WarningSound1");
+			WarningSound2 = new SoundStyle("NoMoreAgroRunner/Assets/Sound/WarningSound2");
+			WarningSound3 = new SoundStyle("NoMoreAgroRunner/Assets/Sound/WarningSound3");
+			
 			ToggleDebugKey = KeybindLoader.RegisterKeybind(this, "Toggle Debug", "P"); // Default key is 'P'
 		}
 

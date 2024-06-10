@@ -62,21 +62,44 @@ namespace NoMoreAgroRunner
 
 					DistanceToNearestPlayer = nearestDistance;
 
-					if (nearestPlayer != null && nearestDistance > 200 * 16 && isBossTarget) // Convert tiles to pixels
+					if (nearestPlayer != null && isBossTarget)
 					{
-						ShowWarning = true;
-						WarningTimer += 0.2f; // Increment timer faster for quicker pulsing effect
+						float warningDistanceInPixels = NoMoreAgroRunnerConfig.Instance.WarningDistanceInTiles * 16;
+						float maxDistanceInPixels = NoMoreAgroRunnerConfig.Instance.MaxDistanceInTiles * 16;
 
-						// Play sound if cooldown is zero
-						if (warningSoundCooldown <= 0)
+						if (nearestDistance > warningDistanceInPixels)
 						{
-							SoundEngine.PlaySound(new SoundStyle("NoMoreAgroRunner/Assets/Sound/WarningSound"));
-							warningSoundCooldown = WarningSoundCooldownMax;
+							ShowWarning = true;
+							WarningTimer += 0.2f; // Increment timer faster for quicker pulsing effect
+
+							// Play sound if cooldown is zero and based on distance
+							if (warningSoundCooldown <= 0)
+							{
+								if (nearestDistance > maxDistanceInPixels * 0.75f)
+								{
+									SoundEngine.PlaySound(NoMoreAgroRunner.WarningSound3);
+								}
+								else if (nearestDistance > maxDistanceInPixels * 0.5f)
+								{
+									SoundEngine.PlaySound(NoMoreAgroRunner.WarningSound2);
+								}
+								else
+								{
+									SoundEngine.PlaySound(NoMoreAgroRunner.WarningSound1);
+								}
+
+								warningSoundCooldown = WarningSoundCooldownMax;
+							}
+						}
+						else
+						{
+							// Reset the warning when the player is in range
+							ShowWarning = false;
+							WarningTimer = 0f;
 						}
 					}
 					else
 					{
-						// Reset the warning when the player is in range
 						ShowWarning = false;
 						WarningTimer = 0f;
 					}
@@ -92,7 +115,7 @@ namespace NoMoreAgroRunner
 					// Play sound if cooldown is zero
 					if (warningSoundCooldown <= 0)
 					{
-						SoundEngine.PlaySound(new SoundStyle("NoMoreAgroRunner/Assets/Sound/WarningSound"));
+						SoundEngine.PlaySound(NoMoreAgroRunner.WarningSound1);
 						warningSoundCooldown = WarningSoundCooldownMax;
 					}
 				}
