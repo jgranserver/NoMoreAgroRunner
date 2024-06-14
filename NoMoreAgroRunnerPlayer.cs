@@ -12,7 +12,6 @@ namespace NoMoreAgroRunner
 	{
 
 		public static bool DebugMode { get; set; }
-
 		public float DistanceToNearestPlayer { get; set; }
 		public bool ShowWarning { get; set; }
 		public float WarningTimer { get; set; }
@@ -40,30 +39,32 @@ namespace NoMoreAgroRunner
 
 				if (!DebugMode)
 				{
-					foreach (Player player in Main.player)
+					foreach (NPC npc in Main.npc)
 					{
-						if (player.active && player.whoAmI != Player.whoAmI)
+						if (npc.active && npc.boss && npc.target == Player.whoAmI)
 						{
-							foreach (NPC npc in Main.npc)
-							{
-								if (npc.active && npc.boss && npc.target == player.whoAmI)
-								{
-									isBossTarget = true;
-									float distance = Vector2.Distance(Player.Center, player.Center);
-									if (distance < nearestDistance)
-									{
-										nearestDistance = distance;
-										nearestPlayer = player;
-									}
-								}
-							}
+							isBossTarget = true;
+							break;
 						}
 					}
 
-					DistanceToNearestPlayer = nearestDistance;
-
-					if (nearestPlayer != null && isBossTarget)
+					if (isBossTarget)
 					{
+						foreach (Player player in Main.player)
+						{
+							if (player.active && player.whoAmI != Player.whoAmI)
+							{
+								float distance = Vector2.Distance(Player.Center, player.Center);
+								if (distance < nearestDistance)
+								{
+									nearestDistance = distance;
+									nearestPlayer = player;
+								}
+							}
+						}
+
+						DistanceToNearestPlayer = nearestDistance;
+
 						float warningDistanceInPixels = NoMoreAgroRunnerConfig.Instance.WarningDistanceInTiles * 16;
 						float maxDistanceInPixels = NoMoreAgroRunnerConfig.Instance.MaxDistanceInTiles * 16;
 
